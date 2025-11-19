@@ -25,7 +25,6 @@ The objective is straightforward: analyze historical AQI patterns, identify key 
    - `AQI_Avg7` (7-day rolling mean, lagged)
 5. **Modeling** — Random Forest Regressor trained on historical windows (details in notebook).
 6. **Forecasting** — short-term forecasts generated per city and appended back to the dataset for comparison.
-7. **Evaluation** — compute MAE and/or RMSE and produce an Actual vs Predicted plot.
 
 ---
 
@@ -41,7 +40,7 @@ The dashboard contains multiple pages with interactive filters (Year, AQI Status
 - State-level pollutant totals (bar charts)
 - Choropleth map of average AQI by state
 
-Screenshots are placed in `/images/dashboard_screenshots/`.
+Screenshots are placed in `/Images`.
 
 ---
 
@@ -49,67 +48,6 @@ Screenshots are placed in `/images/dashboard_screenshots/`.
 
 - The model captures short-term seasonal spikes (winter peaks) and city-level differences driven primarily by PM2.5 and PM10.
 - Forecasts are produced for a short horizon (example: 2020-07-02 to 2020-07-15) per city.
-- Training and evaluation details (periods, error metrics) are documented in the notebook.
-
-> **Note:** Detailed numeric results (MAE/RMSE, per-city tables, sample forecasts) are available in the Jupyter notebook.
-
----
-
-## Repository structure
-
-```
-AQI_Analysis_and_Forecasting/
-
-├── Notebook/
-│   └── AQI_Forecasting.ipynb        # preprocessing, model training, forecasting, evaluation
-
-├── PowerBI_Dashboard/
-│   └── AQI_Dashboard.pbix            # Power BI file (screenshots in images/)
-
-├── Data/
-│   └── city_day.xlsx                 # source
-│   └── forecast.csv
-
-├── Images/
-│   └── Dashboard_Screenshots        # screenshots
-
-├── README.md                          # this file
-└── requirements.txt                   # Python dependencies
-```
-
----
-
-## Run the notebook (recommended)
-
-1. Create a virtual environment and install dependencies:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate   # or .venv\Scripts\activate on Windows
-pip install -r requirements.txt
-```
-
-2. Open the notebook:
-
-```bash
-jupyter notebook notebook/aqi_forecasting.ipynb
-```
-
-3. Follow the notebook cells in order. The notebook is structured so the preprocessing and feature-engineering cells run independently from the modeling cells (so you can reuse cleaned data if needed).
-
----
-
-## Notes on reproducibility and data
-
-- If the raw dataset is large or contains restricted fields, include an anonymized sample in `data/sample/` and provide instructions on where to obtain the full data (source link).
-- Keep column types and date parsing explicit in the notebook to avoid timezone/dtype issues.
-
----
-
-## Limitations
-
-- Forecasting horizon is short and the model is not intended for long-term forecasting without retraining and more features (weather, emissions, policy events).
-- Data quality depends on sensor networks; some stations may have missing or noisy readings.
 
 ---
 
@@ -129,6 +67,21 @@ jupyter notebook notebook/aqi_forecasting.ipynb
 
 ---
 
-## Contact
 
-If you want the README tailored further (shorter/longer, different tone), or want the notebook cleaned up into runnable scripts, tell me which format you prefer (full notebook, export to `.py`, or packaged module).
+## Run the notebook (recommended)
+
+1. Create a virtual environment and install dependencies:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+2. Open the notebook:
+
+```bash
+jupyter notebook notebook/AQI_Forecasting.ipynb
+```
+
+3. Follow the notebook cells in order. The notebook is structured so the preprocessing and feature-engineering cells run independently from the modeling cells (so you can reuse cleaned data if needed).
