@@ -1,4 +1,4 @@
-# AQI Analysis & Forecasting (2015–2020)
+# AQI Trend Analysis & Forecasting (2015–2020)
 
 This project analyzes long-term Air Quality Index (AQI) trends across multiple Indian cities and builds a short-term forecasting model using machine learning.
 The work includes complete preprocessing (missing values, outliers, temporal feature engineering), training a Random Forest model for day-ahead AQI predictions and A multi-page Power BI dashboard is included to visualize city-wise trends, pollutant distributions, seasonal patterns, and state-level insights.
